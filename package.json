@@ -1,0 +1,26 @@
+{
+  "name": "ui-automation-project",
+  "version": "1.0.0",
+  "description": "ui automation project",
+  "main": "index.js",
+  "scripts": {
+    "open:cypress": "npx cypress open",
+    "cy:run": "cypress run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ksenia-maslova/UI-automation-project.git"
+  },
+  "author": "ksenia maslova",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ksenia-maslova/UI-automation-project/issues"
+  },
+  "homepage": "https://github.com/ksenia-maslova/UI-automation-project#readme",
+  "devDependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^20.0.6",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.1",
+    "cypress": "^13.11.0",
+    "typescript": "^5.4.5"
+  }
+}
