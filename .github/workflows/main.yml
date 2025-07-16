@@ -6,6 +6,8 @@ on:
 jobs:
   cypress-run:
     runs-on: ubuntu-22.04
+    env:
+      CYPRESS_BASE_URL: ${{ secrets.CYPRESS_BASE_URL }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
