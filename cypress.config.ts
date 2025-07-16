@@ -10,6 +10,10 @@ export default defineConfig({
   e2e: {
     baseUrl: process.env.CYPRESS_BASE_URL,
     specPattern: "**/*.feature",
+    env: {
+      omitFiltered: true,
+      filterSpecs: true,
+    },
     async setupNodeEvents(
       on: Cypress.PluginEvents,
       config: Cypress.PluginConfigOptions
