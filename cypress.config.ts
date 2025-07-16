@@ -2,10 +2,13 @@ import { defineConfig } from "cypress";
 import createBundler from "@bahmutov/cypress-esbuild-preprocessor";
 import { addCucumberPreprocessorPlugin } from "@badeball/cypress-cucumber-preprocessor";
 import createEsbuildPlugin from "@badeball/cypress-cucumber-preprocessor/esbuild";
+import * as dotenv from "dotenv";
+
+dotenv.config();
 
 export default defineConfig({
   e2e: {
-    baseUrl: "https://todomvc.com/examples/javascript-es6/dist/",
+    baseUrl: process.env.CYPRESS_BASE_URL,
     specPattern: "**/*.feature",
     async setupNodeEvents(
       on: Cypress.PluginEvents,

@@ -22,5 +22,8 @@
     "@bahmutov/cypress-esbuild-preprocessor": "^2.2.1",
     "cypress": "^13.11.0",
     "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.0"
   }
 }
