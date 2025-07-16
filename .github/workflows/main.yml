@@ -5,7 +5,7 @@ on:
 
 jobs:
   cypress-run:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     env:
       CYPRESS_BASE_URL: ${{ secrets.CYPRESS_BASE_URL }}
     steps:
