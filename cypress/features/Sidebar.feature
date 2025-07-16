@@ -6,7 +6,6 @@ Feature: Sidebar info
 Background: Navigate to the application
     Given I am on the start application page
 
-@smoke
 Scenario: Verify that sidebar is displayed
     Then side menu is "visible" on the page
         And side menu has "JavaScript ES6" title
