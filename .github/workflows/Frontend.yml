@@ -19,4 +19,4 @@ jobs:
       - name: Run FE tests
         uses: cypress-io/github-action@v6
         with:
-          start: npm run cy:run:ui
+          browser: chrome
