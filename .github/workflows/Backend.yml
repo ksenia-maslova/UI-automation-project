@@ -15,5 +15,5 @@ jobs:
       - name: Run BE Tests
         uses: cypress-io/github-action@v6
         with:
-          start: npm run cy:run:api
-          # config-file: cypress.config.api.ts
+          start: npx cypress run
+          config-file: cypress.config.api.ts
