@@ -5,5 +5,8 @@ export default defineConfig({
     baseUrl: 'https://fakestoreapi.com',
     specPattern: "**/*.spec.ts",
   },
-  env: {}
+  env: {
+    omitFiltered: true,
+    filterSpecs: true,
+  }
 });

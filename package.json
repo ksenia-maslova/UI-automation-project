@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "open:cypress:ui": "npx cypress open",
-    "open:cypress:api": "npx cypress open --config-file 'cypress/api/api.config.ts'",
+    "open:cypress:api": "npx cypress open --config-file cypress.config.api.ts",
     "cy:run:ui": "cypress run",
-    "cy:run:api": "cypress run --config-file 'cypress/api/api.config.ts'"
+    "cy:run:api": "npx cypress run --config-file cypress.config.api.ts"
   },
   "repository": {
     "type": "git",
