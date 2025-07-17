@@ -4,8 +4,10 @@
   "description": "ui automation project",
   "main": "index.js",
   "scripts": {
-    "open:cypress": "npx cypress open",
-    "cy:run": "cypress run"
+    "open:cypress:ui": "npx cypress open",
+    "open:cypress:api": "npx cypress open --config-file 'cypress/api/api.config.ts'",
+    "cy:run:ui": "cypress run",
+    "cy:run:api": "cypress run --config-file 'cypress/api/api.config.ts'"
   },
   "repository": {
     "type": "git",
