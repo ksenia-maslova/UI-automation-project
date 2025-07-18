@@ -202,6 +202,20 @@ app.get("/my-concerts", authenticateToken, requireUser, async (req, res) => {
     res.json({ upcoming, today: todayList, past });
 });
 
+// Admin: Delete user by ID (cannot delete self)
+app.delete('/users/:id', authenticateToken, requireAdmin, async (req, res) => {
+  const { id } = req.params;
+  if (parseInt(id) === req.user.id) {
+    return res.status(400).json({ error: 'Admin cannot delete themselves' });
+  }
+  const user = await db.get('SELECT * FROM users WHERE id = ?', [id]);
+  if (!user) {
+    return res.status(404).json({ error: 'User not found' });
+  }
+  await db.run('DELETE FROM users WHERE id = ?', [id]);
+  res.json({ success: true });
+});
+
 app.listen(PORT, () => {
     console.log(`API server running on http://localhost:${PORT}`);
 });

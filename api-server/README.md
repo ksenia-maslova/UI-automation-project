@@ -176,3 +176,13 @@ curl http://localhost:3001/my-concerts -H "Authorization: Bearer <user_token>"
   UPDATE users SET role = 'admin' WHERE username = 'your_admin_username';
   ```
 - Dates must be in `YYYY-MM-DD` format for correct categorization. 
+
+### Users (Admin)
+#### Delete User by ID
+- `DELETE /users/:id`
+- Headers: `Authorization: Bearer <admin_token>`
+- Only admin can call this endpoint. Admin cannot delete themselves.
+- Response: `{ "success": true }` or error
+- Error cases:
+  - 400: Admin cannot delete themselves
+  - 404: User not found 
