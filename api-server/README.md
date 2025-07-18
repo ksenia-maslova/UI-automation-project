@@ -38,7 +38,7 @@ This is a simple concert ticketing API with user authentication, roles, and CRUD
 - `POST /register`
 - Body: `{ "username": "string", "password": "string" }`
 - Password must be at least 4 characters. Username cannot be empty.
-- Response: `{ "success": true }` or error
+- Response: `{ "success": true, "id": <user_id> }` or error
 
 #### Login
 - `POST /login`
@@ -67,7 +67,7 @@ This is a simple concert ticketing API with user authentication, roles, and CRUD
 - `POST /concerts`
 - Headers: `Authorization: Bearer <token>` (admin only)
 - Body: `{ "name": "string", "location": "string", "ticket_price": number, "date": "YYYY-MM-DD" }`
-- Response: `{ "success": true }` or error
+- Response: `{ "success": true, "id": <concert_id> }` or error
 
 #### Update Concert (Admin)
 - `PUT /concerts/:id`
@@ -102,7 +102,7 @@ This is a simple concert ticketing API with user authentication, roles, and CRUD
 - `POST /purchase`
 - Headers: `Authorization: Bearer <token>` (user or admin)
 - Body: `{ "concert_id": number }`
-- Response: `{ "success": true }` or error
+- Response: `{ "success": true, "id": <purchase_id> }` or error
 
 #### My Concerts
 - `GET /my-concerts`

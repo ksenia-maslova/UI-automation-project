@@ -1,0 +1,9 @@
+[
+    {
+        "id": 1,
+        "name": "Jazz Night",
+        "location": "Blue Note",
+        "ticket_price": 40,
+        "date": "2024-07-10"
+    }
+]

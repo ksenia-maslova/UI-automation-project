@@ -53,11 +53,11 @@ app.post("/register", async (req, res) => {
             .status(400)
             .json({ error: "Password must be at least 4 characters" });
     try {
-        await db.run(
+        const result = await db.run(
             "INSERT INTO users (username, password, role) VALUES (?, ?, ?)",
             [username, password, "user"]
         );
-        res.json({ success: true });
+        res.json({ success: true, id: result.lastID });
     } catch (e) {
         res.status(400).json({ error: "User already exists" });
     }
@@ -133,11 +133,11 @@ app.post("/concerts", authenticateToken, requireAdmin, async (req, res) => {
     const { name, location, ticket_price, date } = req.body;
     if (!name || !location || !ticket_price || !date)
         return res.status(400).json({ error: "Missing fields" });
-    await db.run(
+    const result = await db.run(
         "INSERT INTO concerts (name, location, ticket_price, date) VALUES (?, ?, ?, ?)",
         [name, location, ticket_price, date]
     );
-    res.json({ success: true });
+    res.json({ success: true, id: result.lastID });
 });
 
 // Admin: Update concert
@@ -164,20 +164,15 @@ app.delete(
 );
 
 // User: Purchase ticket
-app.post("/purchase", authenticateToken, requireUser, async (req, res) => {
-    const { concert_id } = req.body;
-    if (!concert_id)
-        return res.status(400).json({ error: "Missing concert_id" });
-    const concert = await db.get("SELECT * FROM concerts WHERE id = ?", [
-        concert_id,
-    ]);
-    if (!concert) return res.status(404).json({ error: "Concert not found" });
-    const now = new Date().toISOString();
-    await db.run(
-        "INSERT INTO purchases (user_id, concert_id, purchase_date) VALUES (?, ?, ?)",
-        [req.user.id, concert_id, now]
-    );
-    res.json({ success: true });
+app.post('/purchase', authenticateToken, requireUser, async (req, res) => {
+  const { concert_id } = req.body;
+  if (!concert_id)
+    return res.status(400).json({ error: 'Missing concert_id' });
+  const concert = await db.get('SELECT * FROM concerts WHERE id = ?', [concert_id]);
+  if (!concert) return res.status(404).json({ error: 'Concert not found' });
+  const now = new Date().toISOString();
+  const result = await db.run('INSERT INTO purchases (user_id, concert_id, purchase_date) VALUES (?, ?, ?)', [req.user.id, concert_id, now]);
+  res.json({ success: true, id: result.lastID });
 });
 
 // User: Get my concerts (categorized)
