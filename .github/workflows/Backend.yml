@@ -19,7 +19,7 @@ jobs:
       - name: Install backend dependencies
         run: |
           cd api-server
-          npm ci
+          npm install
       - name: Start backend server
         run: |
           cd api-server
