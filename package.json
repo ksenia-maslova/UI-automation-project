@@ -7,7 +7,8 @@
     "open:cypress:ui": "npx cypress open",
     "open:cypress:api": "npx cypress open --config-file cypress.config.api.ts",
     "cy:run:ui": "cypress run",
-    "cy:run:api": "cypress run --config-file cypress.config.api.ts"
+    "cy:run:api": "cypress run --config-file cypress.config.api.ts",
+    "api-server": "npm run dev --prefix api-server"
   },
   "repository": {
     "type": "git",
