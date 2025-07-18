@@ -26,7 +26,7 @@ jobs:
           npm start &
       - name: Wait for backend to be ready
         run: |
-          npx wait-on http://localhost:3001
+          timeout 60 bash -c 'until curl -s http://localhost:3001/ > /dev/null; do sleep 2; done'
       - name: Run BE Tests
         uses: cypress-io/github-action@v6
         with:
